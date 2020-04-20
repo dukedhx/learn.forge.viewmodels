@@ -97,7 +97,7 @@ namespace forgesample.Controllers
       BucketsApi buckets = new BucketsApi();
       dynamic token = await OAuthController.GetInternalAsync();
       buckets.Configuration.AccessToken = token.access_token;
-      PostBucketsPayload bucketPayload = new PostBucketsPayload(string.Format("{0}-{1}", ClientId, bucket.bucketKey.ToLower()), null,
+      PostBucketsPayload bucketPayload = new PostBucketsPayload(string.Format("{0}-{1}", ClientId.ToLower(), bucket.bucketKey.ToLower()), null,
         PostBucketsPayload.PolicyKeyEnum.Transient);
       return await buckets.CreateBucketAsync(bucketPayload, "US");
     }
